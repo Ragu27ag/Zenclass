@@ -1,0 +1,12 @@
+{
+    "name" : "AGR",
+    "AGE" : "24",
+    "gender" : "male",
+    "ROLE" : "Developer",
+    "skills" : ["java","sql","javascript","html","css"],
+    "experience" : "6mo",
+    "cuurent company" : "xxxx soutions",
+    "HOBBIES" : ["cricket","webseries","fb"]
+    
+    
+}

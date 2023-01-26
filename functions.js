@@ -21,9 +21,25 @@ var a = [1,2,3,4,2];
 // },10);
 // console.log(c);
 
-console.log(a.lastIndexOf(2)); 
+// console.log(a.lastIndexOf(2)); 
 
 var b = 'abcd'
 
-console.log(a.join('/'));
-console.log(b.split('',1))
+// console.log(a.join('/'));
+// console.log(b.split('',1))
+
+console.log(a.join(','));
+console.log(b.split(''));
+
+console.log(b.replace('c','d'))
+
+var a = {
+    name : 'agr',
+    age : '24',
+    sal : {
+        first : 15000,
+        second : 70000,
+        third : 1200000
+    }
+}
+

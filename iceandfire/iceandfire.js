@@ -30,7 +30,7 @@ var chars = [];
 var page = 1;
 
 document.body.style.backgroundColor = '#616bcf';
-var charfetch = async () =>{
+var charfetch = async () => {
 
     var response = await fetch(`https://www.anapioficeandfire.com/api/books?page=${page}&pageSize=5`);
     var character = await response.json();
@@ -38,7 +38,7 @@ var charfetch = async () =>{
     // var search = document.createElement('div');
     //     search.classList.add('container');
     //     search.style.height = '100px';
-        
+
     //     var input = document.createElement('input');
     //     input.classList.add('form-control');
     //     input.setAttribute('id','search');
@@ -51,12 +51,12 @@ var charfetch = async () =>{
     //     search.append(input,butt);
     //     document.body.append(search);
 
-        
 
 
-    chars.forEach( ({name,isbn,numberOfPages,authors,publisher,released,characters}) => {
 
-        
+    chars.forEach(({ name, isbn, numberOfPages, authors, publisher, released, characters }) => {
+
+
 
 
         var booknamecon = document.createElement('div');
@@ -67,12 +67,12 @@ var charfetch = async () =>{
         var booknamerow = document.createElement('div');
 
 
-        booknamerow.classList.add('row','m-2','border-bottom' , 'border-danger');
+        booknamerow.classList.add('row', 'm-2', 'border-bottom', 'border-danger');
         booknamerow.style.height = '350px';
-       
+
 
         var booknamecol1 = document.createElement('div');
-        booknamecol1.classList.add('col-6','m-1','border-end','border-danger','col-sm-4');
+        booknamecol1.classList.add('col-6', 'm-1', 'border-end', 'border-danger', 'col-sm-4');
         booknamecol1.style.height = '200px'
         var bkname = document.createElement('h1');
         bkname.innerText = name;
@@ -81,9 +81,9 @@ var charfetch = async () =>{
         booknamerow.append(booknamecol1);
 
         var isbncol2 = document.createElement('div');
-        isbncol2.classList.add('col-4','p-5','col-sm-3');
+        isbncol2.classList.add('col-4', 'p-5', 'col-sm-3');
         isbncol2.style.height = '150px'
-        
+
         var isbn = document.createElement('p');
         isbn.style.margin = '0%'
         isbn.innerText = `ISBN : ${Number(isbn)}`;
@@ -95,7 +95,7 @@ var charfetch = async () =>{
 
 
         var authname = document.createElement('div');
-        authname.classList.add('col-12','p-sm-5','col-sm-4');
+        authname.classList.add('col-12', 'p-sm-5', 'col-sm-4');
         authname.style.height = '200px'
         //authname.style.textAlign = 'center'
         var authh1 = document.createElement('h4');
@@ -104,20 +104,20 @@ var charfetch = async () =>{
         authh1.style.margin = '0%';
         author.style.margin = '0%';
         author.style.padding = '4%'
-        author.innerText=`${authors}`
+        author.innerText = `${authors}`
         authname.append(authh1);
         authname.append(author);
         booknamerow.append(authname);
-        
+
         var booknamerow2 = document.createElement('div');
-        booknamerow2.classList.add('row','m-2');
+        booknamerow2.classList.add('row', 'm-2');
         booknamerow2.style.height = '400px';
-        
+
 
         var pubname = document.createElement('div');
-        pubname.classList.add('col-6','m-1','col-sm-4');
+        pubname.classList.add('col-6', 'm-1', 'col-sm-4');
         pubname.style.height = '100px'
-        
+
         var pname = document.createElement('p');
         pname.innerText = `Publisher - ${publisher} `;
         var date = document.createElement('p');
@@ -128,35 +128,35 @@ var charfetch = async () =>{
         booknamerow2.append(pubname);
 
 
-  
+
         var cast = document.createElement('div');
-        cast.classList.add('col-3','m-1','col-sm-6');
+        cast.classList.add('col-3', 'm-1', 'col-sm-6');
         cast.style.height = '250px'
         var tit = document.createElement('h4');
         tit.innerText = 'Characters : ';
         cast.append(tit);
 
 
-        
-        
-        for(var i = 0 ; i < 5; i++){
-         fetch(`${characters[i]}`).then((response) =>{
-            return response.json();
-        }).then((cha)=>{
-            var cname = document.createElement('ul');
-            var li = document.createElement('li');
-            if(cha.name == ''){
-                li.innerText = 'No Name';
-            }
-            else{
-                li.innerText = ` ${cha.name} `;
-            }
-            cname.append(li);
-            cast.append(cname);
-        })
+
+
+        for (var i = 0; i < 5; i++) {
+            fetch(`${characters[i]}`).then((response) => {
+                return response.json();
+            }).then((cha) => {
+                var cname = document.createElement('ul');
+                var li = document.createElement('li');
+                if (cha.name == '') {
+                    li.innerText = 'No Name';
+                }
+                else {
+                    li.innerText = ` ${cha.name} `;
+                }
+                cname.append(li);
+                cast.append(cname);
+            })
 
         }
-        
+
         booknamerow2.append(cast);
 
         var empdiv = document.createElement('div');
@@ -165,23 +165,23 @@ var charfetch = async () =>{
 
         booknamecon.append(booknamerow);
         booknamecon.append(booknamerow2);
-        document.body.append(booknamecon,empdiv);
-        
+        document.body.append(booknamecon, empdiv);
+
 
 
     });
 
     var budiv = document.createElement('div');
-    budiv.classList.add('d-flex','justify-content-between');
+    budiv.classList.add('d-flex', 'justify-content-between');
     var but1 = document.createElement('button');
     but1.innerText = 'prev';
-    but1.classList.add('btn-primary','m-2');
-    but1.setAttribute('onClick','prevPageFunc()');
+    but1.classList.add('btn-primary', 'm-2');
+    but1.setAttribute('onClick', 'prevPageFunc()');
     var but2 = document.createElement('button');
     but2.innerText = 'next';
     but2.classList.add('btn-primary', 'm-2');
-    but2.setAttribute('onClick','nextPageFunc()');
-    budiv.append(but1,but2);
+    but2.setAttribute('onClick', 'nextPageFunc()');
+    budiv.append(but1, but2);
     document.body.append(budiv);
 
 
@@ -191,7 +191,7 @@ var charfetch = async () =>{
 
 
 
-const search = () =>{
+const search = () => {
     const value = document.getElementById('search').value;
     charfetch(value);
     console.log(value)
@@ -201,11 +201,11 @@ const nextPageFunc = () => {
     page++;
     charfetch();
     console.log(page)
-  }
+}
 
 const prevPageFunc = () => {
     page--;
     charfetch();
-  }
+}
 
-  charfetch();
+charfetch();
